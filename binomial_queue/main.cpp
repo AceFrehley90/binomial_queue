@@ -90,22 +90,28 @@ bheap_extract_min(bheap_t *h, pair_t *v) {
 
 int main() {
     bheap_t *h = bheap_new(1000);
-    unsigned int n, i;
+    unsigned int i;
     pair_t v = {0, 0};
   
 
+ 
     
     printf("Кол-во эл-ов кучи: ");
-    scanf("%u", &n);
-     printf("\n");
-    
-    printf("Перечисление эл-ов кучи: ");
-    for( i = 0; i < n; i++ )
+  
+    i=0;
+    do
     {
         scanf("%d", &v.key);
-        v.value = i;
-        bheap_add(h, v);
+        if(v.key!=0)
+        {
+            v.value = i++;
+            bheap_add(h, v);
+        }
     }
+    while(v.key!=0);
+    
+    
+    
      printf("\n");
     while( bheap_extract_min(h, &v) ) {
         printf("%d ", v.key);
