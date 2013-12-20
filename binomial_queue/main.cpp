@@ -95,17 +95,18 @@ int main() {
   
 
     
-    
+    printf("Кол-во эл-ов кучи: ");
     scanf("%u", &n);
+     printf("\n");
     
+    printf("Перечисление эл-ов кучи: ");
     for( i = 0; i < n; i++ )
-    
     {
         scanf("%d", &v.key);
         v.value = i;
         bheap_add(h, v);
     }
-    
+     printf("\n");
     while( bheap_extract_min(h, &v) ) {
         printf("%d ", v.key);
     }
