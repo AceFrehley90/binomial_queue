@@ -28,6 +28,7 @@
 		31AA2A0D18644FCB0022F4C0 /* binomial_queue */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = binomial_queue; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AA2A1018644FCB0022F4C0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		31AA2A1218644FCB0022F4C0 /* binomial_queue.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = binomial_queue.1; sourceTree = "<group>"; };
+		31AA2A1D18646CF20022F4C0 /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		31AA2A0418644FCB0022F4C0 = {
 			isa = PBXGroup;
 			children = (
+				31AA2A1D18646CF20022F4C0 /* Window.xib */,
 				31AA2A0F18644FCB0022F4C0 /* binomial_queue */,
 				31AA2A0E18644FCB0022F4C0 /* Products */,
 			);
