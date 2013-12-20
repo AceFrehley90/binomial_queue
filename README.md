@@ -1,11 +1,47 @@
 Project: binomial_queue
 ==============
 
-#Реализация биномиальной кучи#
+# Теоретическая часть #
 
---тут будет описание, реализация и прочая информация-
+Организация биномиальных куч(очередей) имеет схожую природу с организацией хранения данных в виде массива куч, который мы использовали в реализации плавной сортировки, только здесь все проще. 
 
-## Список литературы
+Главное предназначение биномиальных куч в том, что их можно объединять за логарифмическое время. Как показывает практика такая задача практически не встречается в чистом виде, но зато может быть использована как подзадача в более сложной задаче. 
+
+## Добавление элемента в биномиальную кучу ##
+Эта операция полностью повторяет логику сложения двух двоичных чисел. Допустим нам нужно сложить 11 и 1.
+
+        1011 
+     +  0001  
+     -------  
+        1100
+
+Единичный разряд будет переноситься до ближайшего справа нулевого бита. Функция добавления нового элемента может выглядеть вот так:
+
+~~~
+void
+bheap_add( bheap_t *h, pair_t v ) {
+    if( h->size + 1 >= h->data_size ) {
+        h->data_size *= 2;
+        h->data = (pair_t*) realloc( h->data, h->data_size * sizeof(pair_t) );
+    }
+    h->data[ ++(h->size) ] = v ;
+    bheap_checkup( h, h->size );
+}
+~~~
+
+## Поиск максимального элемента в биномиальной куче ##
+Корень каждого пирамидального дерева является максимальным элементов в данном дереве. Поэтому для поиска максимального элемента в биномиальной куче нужно последовательно перебрать все корни пирамидальных деревьев и выбрать максимальный. 
+
+
+# Инструкция по компиляции #
+# Инструкцию по использованию #
+# Краткое описание логики программы #
+# Оценка сложности основных алгоритмов программы #
+# Несколько примеров, на которых можно протестировать программу #
+
+
+
+# Список литературы #
 
 * J.W.J. Williams, Algorithm 232, Heapsort, CACM 7, 6 (June 1964), 347–348.
 * R.W. Floyd, Algorithm 245, Treesort 3, CACM 7, 12 (Dec. 1964), 701.
@@ -14,94 +50,3 @@ Project: binomial_queue
 * Fredman, M. L.; Tarjan (1987). Fibonacci heaps and their uses in improved network optimization algorithms. СACM 34 (3): 596–615.
 * Т.Кормен, Ч.Лейзерсон, Р.Ривест, К.Штайн. Алгоритмы: построение и анализ — 2-е изд. — М.: Издательский дом «Вильямс», 2007. — С. 1296.
 * К.Д.Маннинг, П.Рагхаван, Х.Шютце. Введение в информационный поиск. - “Вильямс”. 2011.
-
-
-____________________________
-## Подсказка по оформлению ##
-### Header 3 ###             (Hashes on right are optional)
-#### Header 4 ####
-##### Header 5 #####
-
-## Markdown plus h2 with a custom ID ##         {#id-goes-here}
-[Link back to H2](#id-goes-here)
-
-This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
-line (or many), and can drone on for hours.  
-
-Here is a Markdown link to [Warped](http://warpedvisions.org), and a literal . 
-Now some SimpleLinks, like one to [google] (automagically links to are-you-
-feeling-lucky), a [wiki: test] link to a Wikipedia page, and a link to 
-[foldoc: CPU]s at foldoc.  
-
-Now some inline markup like _italics_,  **bold**, and `code()`. Note that underscores in 
-words are ignored in Markdown Extra.
-
-![picture alt](/images/photo.jpeg "Title is optional")     
-
-> Blockquotes are like quoted text in email replies
->> And, they can be nested
-
-* Bullet lists are easy too
-- Another one
-+ Another one
-
-1. A numbered list
-2. Which is numbered
-3. With periods and a space
-
-And now some code:
-
-    // Code is just text indented a bit
-    which(is_easy) to_remember();
-
-~~~
-
-// Markdown extra adds un-indented code blocks too
-
-if (this_is_more_code == true && !indented) {
-    // tild wrapped code blocks, also not indented
-}
-
-~~~
-
-Text with  
-two trailing spaces  
-(on the right)  
-can be used  
-for things like poems  
-
-### Horizontal rules
-
-* * * *
-****
---------------------------
-
-<div class="custom-class" markdown="1">
-This is a div wrapping some Markdown plus.  Without the DIV attribute, it ignores the 
-block. 
-</div>
-
-## Markdown plus tables ##
-
-| Header | Header | Right  |
-| ------ | ------ | -----: |
-|  Cell  |  Cell  |   $10  |
-|  Cell  |  Cell  |   $20  |
-
-
-## Markdown plus definition lists ##
-
-Bottled water
-: $ 1.25
-: $ 1.55 (Large)
-
-Milk
-Pop
-: $ 1.75
-
-* Multiple definitions and terms are possible
-* Definitions can include multiple paragraphs too
-
-*[ABBR]: Markdown plus abbreviations (produces an <abbr> tag)
-
-_____________________
